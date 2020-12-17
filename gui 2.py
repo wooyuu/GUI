@@ -1,6 +1,9 @@
 def page_3():
-    import tkinter as tk    
-        
+    try:
+        import Tkinter as tk
+    except:
+        import tkinter as tk
+    
     rec = tk.Tk()
     rec.title("剩菜小幫手")  # 此應用程式的名字
     rec.geometry('1500x750')
@@ -15,13 +18,13 @@ def page_3():
     botton3=tk.Radiobutton(rec ,height=1 ,font = ('Courier New', 20), text='最新食譜', indicatoron=False)
     botton3.pack()
 
-    rec = recipe()
-    rec.master.title("剩菜小幫手")  # 此應用程式的名字
-
     rec.mainloop() 
 
 def page_2():
-    import tkinter as tk    
+    try:
+        import Tkinter as tk
+    except:
+        import tkinter as tk    
         
     rec = tk.Tk()
     rec.title("剩菜小幫手")  # 此應用程式的名字
@@ -52,9 +55,43 @@ def page_2():
     """
     換頁
     """
-    nextpagebtn = tk.Button(rec, text="下一步", width=25 ,height=1, font=('Courier New', 18), command=page_3)
+    def commandthings():
+        rec.destroy()
+        page_3()
+    nextpagebtn = tk.Button(rec, text="下一步", width=25 ,height=1, font=('Courier New', 18), command=commandthings)
     nextpagebtn.place(x=450, y=500)
     
     rec.mainloop()
 
-page_2()
+def page_1():   
+    try:
+        import Tkinter as tk
+    except:
+        import tkinter as tk    
+        
+    rec = tk.Tk()
+    rec.title("剩菜小幫手")  # 此應用程式的名字
+    rec.geometry('1500x750')
+
+    """
+    內容
+    """
+    l=tk.Label(rec ,bg='aliceblue' ,width=75 ,height=2 ,font=('Courier New', 30) ,text='今晚我想來點......' )
+    l.pack()
+
+    botton1=tk.Radiobutton(rec ,height=1 ,font = ('Courier New', 18) ,text='湊一湊就上桌',indicatoron=False)
+    botton1.pack()
+    botton2=tk.Radiobutton(rec ,height=1 ,font = ('Courier New', 18) ,text='幫我盡可能處理掉他們 即使要付出代價',indicatoron=False)
+    botton2.pack()
+
+    """
+    換頁
+    """
+    def commandthings():
+        rec.destroy()
+        page_2()
+    nextpagebtn = tk.Button(rec, text="下一步", width=25 ,height=1, font=('Courier New', 18), command=commandthings)
+    nextpagebtn.place(x=450, y=500)
+    rec.mainloop()
+
+page_1()
