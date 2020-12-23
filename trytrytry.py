@@ -77,8 +77,8 @@ def call_forth_frame_on_top():
 
 def quit_program(): 
     rec.destroy()
-"""
-"""
+
+# Start!
 rec = tk.Tk() 
 rec.title("剩菜小幫手")  # 此應用程式的名字
 rec.geometry('1500x750')
