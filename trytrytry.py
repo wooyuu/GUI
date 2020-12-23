@@ -2,15 +2,15 @@ import tkinter as tk
 import tkinter.ttk as ttk
 
 def create_page_1(): 
-    l=tk.Label(rec1 ,bg='aliceblue' ,width=70 ,height=2 ,font=('Courier New', 30) ,text='今晚我想來點......' )
-    l.pack()
+    l=tk.Label(rec1 ,bg='aliceblue' ,width=60 ,height=2 ,font=('Courier New', 30) ,text='今晚我想來點......' )
+    l.place(x=0, y=0)
 
     botton1=tk.Radiobutton(rec1 ,height=1 ,font = ('Courier New', 18) ,text='湊一湊就上桌',indicatoron=False)  ### command= 剩越少越好
-    botton1.pack()
+    botton1.place(x=450, y=200)
     botton2=tk.Radiobutton(rec1 ,height=1 ,font = ('Courier New', 18) ,text='幫我盡可能處理掉他們 即使要付出代價',indicatoron=False)  ### command= 處理越多越好
-    botton2.pack()
+    botton2.place(x=450, y=300)
     nextpagebtn = tk.Button(rec1, text="下一步", width=25 ,height=1, font=('Courier New', 18), command=call_second_frame_on_top)
-    nextpagebtn.place(x=50, y=40)
+    nextpagebtn.place(x=450, y=500)
 
 
 def create_page_2():
@@ -41,17 +41,17 @@ def create_page_2():
 
 def create_page_3():
     l=tk.Label(rec3 ,bg='RosyBrown' ,width=55 ,height=2 ,font=('Courier New', 30) ,text='想要看到甚麼樣的食譜呢?' )
-    l.pack()
+    l.place(x=0, y=0)
 
     botton1=tk.Radiobutton(rec3 ,width=9 ,height=1 ,font = ('Courier New', 20) ,text='越夯越好' ,indicatoron=False)  ###command= 按讚數排
-    botton1.pack()
+    botton1.place(x=550, y=200)
     botton2=tk.Radiobutton(rec3 ,width=9 ,height=1 ,font = ('Courier New', 20) ,text='快速上菜' ,indicatoron=False)  ###command= 按製作時間排
-    botton2.pack()
+    botton2.place(x=550, y=300)
     botton3=tk.Radiobutton(rec3 ,width=9 ,height=1 ,font = ('Courier New', 20), text='最新食譜', indicatoron=False)  ###command= 按新舊排
-    botton3.pack()
+    botton3.place(x=550, y=400)
     
     nextpagebtn = tk.Button(rec3, text="下一步", width=25 ,height=1, font=('Courier New', 18), command=call_forth_frame_on_top)
-    nextpagebtn.place(x=45 ,y=60)
+    nextpagebtn.place(x=450, y=500)
     
 def create_page_4():
     l=tk.Label(rec4 ,bg='gold' ,width=55 ,height=2 ,font=('Courier New', 30) ,text='搭啦' )
