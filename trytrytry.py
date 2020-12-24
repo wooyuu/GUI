@@ -33,8 +33,8 @@ def create_page_2():
     data_1=tk.StringVar()
     dislike_1=tk.StringVar()
     
-    tk.Entry(rec2, font=('CourierNew 30' ,20),width=20, textvariable=data_1).place(x=150 ,y=200)
-    tk.Entry(rec2, font=('CourierNew 30' ,20),width=20, textvariable=dislike_1).place(x=750 ,y=200)
+    tk.Entry(rec2, font=('CourierNew 30' ,30),width=20, textvariable=data_1).place(x=125 ,y=200)
+    tk.Entry(rec2, font=('CourierNew 30' ,30),width=20, textvariable=dislike_1).place(x=725 ,y=200)
     
     nextpagebtn = tk.Button(rec2, text="下一步", width=25 ,height=1, font=('Courier New' ,18), command=lambda:[call_third_frame_on_top(), cr()])
     nextpagebtn.place(x=450, y=600)
