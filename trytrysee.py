@@ -1,9 +1,4 @@
-"""
-網址連結 帶入演算法
-botton 調位子
-(美化)
-(GIF)
-"""
+
 ### algorithm
 import pygsheets
 import webbrowser
