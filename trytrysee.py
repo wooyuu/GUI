@@ -75,7 +75,7 @@ def create_page_4():
     l=tk.Label(rec ,bg='gold' ,width=55 ,height=2 ,font=('Courier New', 30) ,text='搭啦' )
     l.pack()
     text = ScrolledText(rec ,font=('Courier New', 12))
-    text.place(x=250, y=100)
+    text.place(x=2, y=100)
     text.insert("insert", "happy")
     donepagebtn = tk.Button(rec, text="我想重來一次", width=25 ,height=1, font=('Courier New', 18))#, command=)
     donepagebtn.place(x=450, y=500)
