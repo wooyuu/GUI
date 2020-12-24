@@ -213,9 +213,6 @@ elif ranking_type == "new":
     # print(fianl_top_100)
 print("end")
 
-# final_top_100_str = ""
-# for dish_name in final_top_100:
-    # final_top_100_str += dish_name+"\t"+link_dict[dish_name]+"\n"+"\n"
 name = []
 for dish_name in final_top_100:
     name.append(dish_name)
@@ -223,13 +220,10 @@ url = []
 for dish_name in final_top_100:
     url.append(link_dict[dish_name])
 
-
-
 ### gui
 import tkinter as tk
 import tkinter.ttk as ttk
 from tkinter.scrolledtext import ScrolledText
-
 
 def create_page_1(): 
     l=tk.Label(rec1 ,bg='PowderBlue' ,width=56 ,height=2 ,font=('Courier New', 30) ,text='今晚我想來點......' )
