@@ -19,7 +19,7 @@ def create_page_1():
     botton2=tk.Radiobutton(rec1 ,height=1 ,font = ('Courier New', 18) ,text='幫我盡可能處理掉他們 即使要付出代價',indicatoron=False)  ### command= 處理越多越好
     botton2.place(x=450, y=300)
     nextpagebtn = tk.Button(rec1, text="下一步", width=25 ,height=1, font=('Courier New', 18), command=call_second_frame_on_top)
-    nextpagebtn.place(x=450, y=500)
+    nextpagebtn.place(x=450, y=575)
 
 def create_page_2():
     l_f=tk.Label(rec2 ,bg='MediumAquamarine' ,width=25 ,height=2 ,font=('Courier New', 30) ,text='要消耗的食材' )
@@ -45,9 +45,9 @@ def create_page_2():
     tk.Entry(rec2, font=('CourierNew 30' ,30),width=20, textvariable=dislike_1).place(x=725 ,y=200)
     
     extpagebtn = tk.Button(rec2, text="上一步", width=25 ,height=1, font=('Courier New' ,18), command=call_first_frame_on_top)
-    extpagebtn.place(x=450, y=550)
+    extpagebtn.place(x=450, y=500)
     nextpagebtn = tk.Button(rec2, text="下一步", width=25 ,height=1, font=('Courier New' ,18), command=lambda:[call_third_frame_on_top(), cr()])
-    nextpagebtn.place(x=450, y=600)
+    nextpagebtn.place(x=450, y=575)
 
 def create_page_3():
     l=tk.Label(rec3 ,bg='RosyBrown' ,width=55 ,height=2 ,font=('Courier New', 30) ,text='想要看到甚麼樣的食譜呢?' )
@@ -78,9 +78,9 @@ def create_page_4():
     text.place(x=20, y=30)
     text.insert("insert", "happy")
     donepagebtn = tk.Button(rec, text="我想重來一次", width=25 ,height=1, font=('Courier New', 18))#, command=)
-    donepagebtn.place(x=15, y=25)
+    donepagebtn.place(x=450, y=500)
     againpagebtn = tk.Button(rec, text="我要開始做菜了!", width=25 ,height=1, font=('Courier New', 18))#, command=)
-    againpagebtn.place(x=25, y=25)
+    againpagebtn.place(x=450, y=575)
     
 
 def call_first_frame_on_top(): 
