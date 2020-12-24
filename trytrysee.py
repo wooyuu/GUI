@@ -295,13 +295,13 @@ def create_page_4():
     import tkinter as tk
     import tkinter.ttk as ttk
     from tkinter.scrolledtext import ScrolledText
-    rec = tk.Tk() 
-    rec.title("剩菜小幫手")  # 此應用程式的名字
-    rec.geometry('1500x750')
-    l=tk.Label(rec ,bg='gold' ,width=55 ,height=2 ,font=('Courier New', 30) ,text='搭啦' )
+    recnew = tk.Tk() 
+    recnew.title("剩菜小幫手")  # 此應用程式的名字
+    recnew.geometry('1500x750')
+    l=tk.Label(recnew ,bg='gold' ,width=55 ,height=2 ,font=('Courier New', 30) ,text='搭啦' )
     l.pack()
     # text
-    text = ScrolledText(rec ,font=('Courier New', 12), width=125)
+    text = ScrolledText(recnew ,font=('Courier New', 12), width=125)
     text.place(x=4, y=100)
     text.tag_config('link',foreground='blue',underline=True)
     def show_hand_cursor(event):
@@ -323,10 +323,14 @@ def create_page_4():
         text.tag_bind(m,'<Button-1>',handlerAdaptor(click,x=url[m]))
         m+=1
     # botton
-    donepagebtn = tk.Button(rec, text="我想重來一次", width=25 ,height=1, font=('Courier New', 18))#, command=)
-    donepagebtn.place(x=450, y=550)
-    againpagebtn = tk.Button(rec, text="我要開始做菜了!", width=25 ,height=1, font=('Courier New', 18))#, command=)
-    againpagebtn.place(x=450, y=625)
+    def quit_program(): 
+        recnew.destroy()
+    donepagebtn = tk.Button(recnew, text="修改條件", width=15 ,height=1, font=('Courier New', 18), command=quit_program)  # 回到視窗一(第三頁)
+    donepagebtn.place(x=150, y=575)
+    againpagebtn = tk.Button(recnew, text="再來一次", width=15 ,height=1, font=('Courier New', 18), command=lambda:[quit_program(),call_first_frame_on_top()])  # 關閉視窗二 回到視窗一(第一頁)
+    againpagebtn.place(x=525, y=575)
+    overpagebtn = tk.Button(recnew, text="開始做菜", width=15 ,height=1, font=('Courier New', 18), command=lambda:[quit_program(),quit_program2()])  # 關閉視窗一及視窗二
+    overpagebtn.place(x=900, y=575)  
     
 
 def call_first_frame_on_top(): 
@@ -344,7 +348,7 @@ def call_third_frame_on_top():
     rec2.grid_forget() 
     rec3.grid() 
 
-def quit_program(): 
+def quit_program2(): 
     rec.destroy()
 
 # Start!
