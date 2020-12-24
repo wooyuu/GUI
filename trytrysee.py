@@ -1,5 +1,14 @@
+"""
+網址連結 帶入演算法
+botton 調位子
+
+(美化)
+(GIF)
+"""
+
 import tkinter as tk
 import tkinter.ttk as ttk
+from tkinter.scrolledtext import ScrolledText
 
 def create_page_1(): 
     l=tk.Label(rec1 ,bg='aliceblue' ,width=60 ,height=2 ,font=('Courier New', 30) ,text='今晚我想來點......' )
@@ -11,7 +20,6 @@ def create_page_1():
     botton2.place(x=450, y=300)
     nextpagebtn = tk.Button(rec1, text="下一步", width=25 ,height=1, font=('Courier New', 18), command=call_second_frame_on_top)
     nextpagebtn.place(x=450, y=500)
-
 
 def create_page_2():
     l_f=tk.Label(rec2 ,bg='MediumAquamarine' ,width=25 ,height=2 ,font=('Courier New', 30) ,text='要消耗的食材' )
@@ -36,7 +44,7 @@ def create_page_2():
     tk.Entry(rec2, font=('CourierNew 30' ,30),width=20, textvariable=data_1).place(x=125 ,y=200)
     tk.Entry(rec2, font=('CourierNew 30' ,30),width=20, textvariable=dislike_1).place(x=725 ,y=200)
     
-    extpagebtn = tk.Button(rec2, text="上一步", width=25 ,height=1, font=('Courier New' ,18), command=call_first_frame_on_top())
+    extpagebtn = tk.Button(rec2, text="上一步", width=25 ,height=1, font=('Courier New' ,18), command=call_first_frame_on_top)
     extpagebtn.place(x=450, y=550)
     nextpagebtn = tk.Button(rec2, text="下一步", width=25 ,height=1, font=('Courier New' ,18), command=lambda:[call_third_frame_on_top(), cr()])
     nextpagebtn.place(x=450, y=600)
@@ -46,59 +54,49 @@ def create_page_3():
     l.place(x=0, y=0)
 
     botton1=tk.Radiobutton(rec3 ,width=9 ,height=1 ,font = ('Courier New', 20) ,text='越夯越好' ,indicatoron=False)  ###command= 按讚數排
-    botton1.place(x=550, y=200)
+    botton1.place(x=550, y=175)
     botton2=tk.Radiobutton(rec3 ,width=9 ,height=1 ,font = ('Courier New', 20) ,text='快速上菜' ,indicatoron=False)  ###command= 按製作時間排
-    botton2.place(x=550, y=300)
+    botton2.place(x=550, y=275)
     botton3=tk.Radiobutton(rec3 ,width=9 ,height=1 ,font = ('Courier New', 20), text='最新食譜', indicatoron=False)  ###command= 按新舊排
-    botton3.place(x=550, y=400)
+    botton3.place(x=550, y=375)
     
     extpagebtn = tk.Button(rec3, text="上一步", width=25 ,height=1, font=('Courier New', 18), command=call_second_frame_on_top)
-    extpagebtn.place(x=450, y=450)
-    nextpagebtn = tk.Button(rec3, text="下一步", width=25 ,height=1, font=('Courier New', 18), command=call_forth_frame_on_top)
-    nextpagebtn.place(x=450, y=500)
+    extpagebtn.place(x=450, y=500)
+    nextpagebtn = tk.Button(rec3, text="下一步", width=25 ,height=1, font=('Courier New', 18), command=create_page_4)
+    nextpagebtn.place(x=450, y=575)
     
 def create_page_4():
-    l=tk.Label(rec4 ,bg='gold' ,width=55 ,height=2 ,font=('Courier New', 30) ,text='搭啦' )
+    import tkinter as tk
+    import tkinter.ttk as ttk
+    from tkinter.scrolledtext import ScrolledText
+    rec = tk.Tk() 
+    rec.title("剩菜小幫手")  # 此應用程式的名字
+    rec.geometry('1500x750')
+    l=tk.Label(rec ,bg='gold' ,width=55 ,height=2 ,font=('Courier New', 30) ,text='搭啦' )
     l.pack()
-    extpagebtn = tk.Button(rec3, text="上一步", width=25 ,height=1, font=('Courier New', 18), command=call_third_frame_on_top())
-    extpagebtn.place(x=15, y=25)
-    
-"""
-def resort():
-    final = tk.Text(rec ,bg='white' ,width=30, height=100 ,font=('Courier New',10)).place(x=300,y=100)
-    final.insert('hahaha')
-    final_cite=tk.Text(rec ,bg='white' ,width=30, height=100 ,font=('Courier New',10)).place(x=700,y=100)
-    rec.final_cite.insert('wawawa')
-"""
+    text = ScrolledText(rec)
+    text.place(x=20, y=30)
+    text.insert("insert", "happy")
+    donepagebtn = tk.Button(rec, text="我想重來一次", width=25 ,height=1, font=('Courier New', 18))#, command=)
+    donepagebtn.place(x=15, y=25)
+    againpagebtn = tk.Button(rec, text="我要開始做菜了!", width=25 ,height=1, font=('Courier New', 18))#, command=)
+    againpagebtn.place(x=25, y=25)
     
 
 def call_first_frame_on_top(): 
     rec2.grid_forget() 
     rec3.grid_forget() 
-    rec4.grid_forget()
-    #resort.grid_forget()
     rec1.grid() 
 
 def call_second_frame_on_top(): 
     rec1.grid_forget() 
     rec3.grid_forget() 
-    rec4.grid_forget()
-    #resort.grid_forget()
     rec2.grid() 
 
 def call_third_frame_on_top(): 
     rec1.grid_forget() 
     rec2.grid_forget() 
-    rec4.grid_forget()
-    #resort.grid_forget()
     rec3.grid() 
-    
-def call_forth_frame_on_top(): 
-    rec1.grid_forget() 
-    rec2.grid_forget() 
-    rec3.grid_forget()
-    rec4.grid() 
-    #resort.grid()
 
 def quit_program(): 
     rec.destroy()
@@ -118,23 +116,13 @@ rec2.grid()
 rec3=ttk.Frame(rec ,width=1500 ,height=750)  
 rec3.grid() 
 
-rec4=ttk.Frame(rec ,width=1500 ,height=750) 
-rec4.grid()
-
-resort=ttk.Frame(rec ,width=750 ,height=300)
-resort.grid()
-
-# Create all widgets to all frames.
-create_page_4()
 create_page_3() 
 create_page_2() 
 create_page_1() 
 
 # Hide all frames in reverse order, but leave first frame visible. 
-rec4.grid_forget()
 rec3.grid_forget() 
 rec2.grid_forget() 
-resort.grid_forget()
 
 # Start tkinter event - loop 
 rec.mainloop() 
