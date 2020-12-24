@@ -1,72 +1,140 @@
-try:
-    import Tkinter as tk
-except:
-    import tkinter as tk
+import tkinter as tk
+import tkinter.ttk as ttk
+
+def create_page_1(): 
+    l=tk.Label(rec1 ,bg='aliceblue' ,width=60 ,height=2 ,font=('Courier New', 30) ,text='今晚我想來點......' )
+    l.place(x=0, y=0)
+
+    botton1=tk.Radiobutton(rec1 ,height=1 ,font = ('Courier New', 18) ,text='湊一湊就上桌',indicatoron=False)  ### command= 剩越少越好
+    botton1.place(x=450, y=200)
+    botton2=tk.Radiobutton(rec1 ,height=1 ,font = ('Courier New', 18) ,text='幫我盡可能處理掉他們 即使要付出代價',indicatoron=False)  ### command= 處理越多越好
+    botton2.place(x=450, y=300)
+    nextpagebtn = tk.Button(rec1, text="下一步", width=25 ,height=1, font=('Courier New', 18), command=call_second_frame_on_top)
+    nextpagebtn.place(x=450, y=500)
+
+
+def create_page_2():
+    l_f=tk.Label(rec2 ,bg='MediumAquamarine' ,width=25 ,height=2 ,font=('Courier New', 30) ,text='要消耗的食材' )
+    l_f.place(x=30, y=0)
+    l_r=tk.Label(rec2 ,bg='MediumAquamarine' ,width=25 ,height=2 ,font=('Courier New', 30) ,text='不吃的食材' )
+    l_r.place(x=650, y=0)
+    hint=tk.Label(rec2 ,bg='gray' ,fg='white',width=80 ,height=1 ,font=('Courier New', 20) ,text='請以空格隔開不同食材')
+    hint.place(x=0, y=100)
     
-class SampleApp(tk.Tk):
-    def __init__(self):
-        tk.Tk.__init__(self)
-        self._frame = None
-        self.switch_frame(StartPage)
+    """
+    blank
+    """
+    def cr(): 
+        print(data_1.get())
+        print(dislike_1.get())
 
-    def switch_frame(self, frame_class):
-        new_frame = frame_class(self)
-        if self._frame is not None:
-            self._frame.destroy()
-        self._frame = new_frame
-        self._frame.pack()
+    global data_1
+    global dislike_1
+    data_1=tk.StringVar()
+    dislike_1=tk.StringVar()
+    
+    tk.Entry(rec2, font=('CourierNew 30' ,30),width=20, textvariable=data_1).place(x=125 ,y=200)
+    tk.Entry(rec2, font=('CourierNew 30' ,30),width=20, textvariable=dislike_1).place(x=725 ,y=200)
+    
+    extpagebtn = tk.Button(rec2, text="上一步", width=25 ,height=1, font=('Courier New' ,18), command=call_first_frame_on_top())
+    extpagebtn.place(x=450, y=550)
+    nextpagebtn = tk.Button(rec2, text="下一步", width=25 ,height=1, font=('Courier New' ,18), command=lambda:[call_third_frame_on_top(), cr()])
+    nextpagebtn.place(x=450, y=600)
 
-class StartPage(tk.Frame):
-    def __init__(self, master):
-        tk.Frame.__init__(self, master)
-        
-        """
-        p.2內容
-        """
-        l_f=tk.Label(self ,bg='MediumAquamarine' ,width=25 ,height=2 ,font=('Courier New', 30) ,text='要消耗的食材' )
-        l_f.place(x=30, y=0)
-        l_r=tk.Label(self ,bg='MediumAquamarine' ,width=25 ,height=2 ,font=('Courier New', 30) ,text='不吃的食材' )
-        l_r.place(x=650, y=0)
+def create_page_3():
+    l=tk.Label(rec3 ,bg='RosyBrown' ,width=55 ,height=2 ,font=('Courier New', 30) ,text='想要看到甚麼樣的食譜呢?' )
+    l.place(x=0, y=0)
 
-        
-        # blank
-        dish1 = tk.Entry(self, show=None, font=('Courier New', 18), width=25)
-        dish1.place(x=130, y=200)
-        dish2 = tk.Entry(self, show=None, font=('Courier New', 18), width=25)
-        dish2.place(x=130, y=300)
-        dish3 = tk.Entry(self, show=None, font=('Courier New', 18), width=25)
-        dish3.place(x=130, y=400)
+    botton1=tk.Radiobutton(rec3 ,width=9 ,height=1 ,font = ('Courier New', 20) ,text='越夯越好' ,indicatoron=False)  ###command= 按讚數排
+    botton1.place(x=550, y=200)
+    botton2=tk.Radiobutton(rec3 ,width=9 ,height=1 ,font = ('Courier New', 20) ,text='快速上菜' ,indicatoron=False)  ###command= 按製作時間排
+    botton2.place(x=550, y=300)
+    botton3=tk.Radiobutton(rec3 ,width=9 ,height=1 ,font = ('Courier New', 20), text='最新食譜', indicatoron=False)  ###command= 按新舊排
+    botton3.place(x=550, y=400)
+    
+    extpagebtn = tk.Button(rec3, text="上一步", width=25 ,height=1, font=('Courier New', 18), command=call_second_frame_on_top)
+    extpagebtn.place(x=450, y=450)
+    nextpagebtn = tk.Button(rec3, text="下一步", width=25 ,height=1, font=('Courier New', 18), command=call_forth_frame_on_top)
+    nextpagebtn.place(x=450, y=500)
+    
+def create_page_4():
+    l=tk.Label(rec4 ,bg='gold' ,width=55 ,height=2 ,font=('Courier New', 30) ,text='搭啦' )
+    l.pack()
+    extpagebtn = tk.Button(rec3, text="上一步", width=25 ,height=1, font=('Courier New', 18), command=call_third_frame_on_top())
+    extpagebtn.place(x=15, y=25)
+    
+"""
+def resort():
+    final = tk.Text(rec ,bg='white' ,width=30, height=100 ,font=('Courier New',10)).place(x=300,y=100)
+    final.insert('hahaha')
+    final_cite=tk.Text(rec ,bg='white' ,width=30, height=100 ,font=('Courier New',10)).place(x=700,y=100)
+    rec.final_cite.insert('wawawa')
+"""
+    
 
-        dish1 = tk.Entry(self, show=None, font=('Courier New', 18), width=25)
-        dish1.place(x=770, y=200)
-        dish2 = tk.Entry(self, show=None, font=('Courier New', 18), width=25)
-        dish2.place(x=770, y=300)
-        dish3 = tk.Entry(self, show=None, font=('Courier New', 18), width=25)
-        dish3.place(x=770, y=400)
+def call_first_frame_on_top(): 
+    rec2.grid_forget() 
+    rec3.grid_forget() 
+    rec4.grid_forget()
+    #resort.grid_forget()
+    rec1.grid() 
 
-        tk.Button(self, text="Go to page three",
-                  command=lambda: master.switch_frame(PageThree)).pack()
+def call_second_frame_on_top(): 
+    rec1.grid_forget() 
+    rec3.grid_forget() 
+    rec4.grid_forget()
+    #resort.grid_forget()
+    rec2.grid() 
 
-class PageThree(tk.Frame):
-    def __init__(self, master):
-        tk.Frame.__init__(self, master)
-        
-        """
-        p.3內容
-        """
-        l=tk.Label(self ,bg='RosyBrown' ,width=55 ,height=2 ,font=('Courier New', 30) ,text='想要看到甚麼樣的食譜呢?' )
-        l.pack()
+def call_third_frame_on_top(): 
+    rec1.grid_forget() 
+    rec2.grid_forget() 
+    rec4.grid_forget()
+    #resort.grid_forget()
+    rec3.grid() 
+    
+def call_forth_frame_on_top(): 
+    rec1.grid_forget() 
+    rec2.grid_forget() 
+    rec3.grid_forget()
+    rec4.grid() 
+    #resort.grid()
 
-        botton1=tk.Radiobutton(self ,height=1 ,font = ('Courier New', 20) ,text='越夯越好' ,indicatoron=False)
-        botton1.pack()
-        botton2=tk.Radiobutton(self ,height=1 ,font = ('Courier New', 20) ,text='快速上菜' ,indicatoron=False)
-        botton2.pack()
-        botton3=tk.Radiobutton(self ,height=1 ,font = ('Courier New', 20), text='最新食譜', indicatoron=False)
-        botton3.pack()   
-        
-        tk.Button(self, text="Go back to page2",
-                  command=lambda: master.switch_frame(StartPage)).pack()
+def quit_program(): 
+    rec.destroy()
 
-if __name__ == "__main__":
-    app = SampleApp()
-    app.mainloop()
+# Start!
+rec = tk.Tk() 
+rec.title("剩菜小幫手")  # 此應用程式的名字
+rec.geometry('1500x750')
+
+# Create frames inside the root window 
+rec1=ttk.Frame(rec ,width=1500 ,height=750) 
+rec1.grid() 
+
+rec2=ttk.Frame(rec ,width=1500 ,height=750) 
+rec2.grid() 
+
+rec3=ttk.Frame(rec ,width=1500 ,height=750)  
+rec3.grid() 
+
+rec4=ttk.Frame(rec ,width=1500 ,height=750) 
+rec4.grid()
+
+resort=ttk.Frame(rec ,width=750 ,height=300)
+resort.grid()
+
+# Create all widgets to all frames.
+create_page_4()
+create_page_3() 
+create_page_2() 
+create_page_1() 
+
+# Hide all frames in reverse order, but leave first frame visible. 
+rec4.grid_forget()
+rec3.grid_forget() 
+rec2.grid_forget() 
+resort.grid_forget()
+
+# Start tkinter event - loop 
+rec.mainloop() 
